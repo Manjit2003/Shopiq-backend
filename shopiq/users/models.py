@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField
+from django.db.models import CharField, EmailField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
@@ -15,6 +15,11 @@ class User(AbstractUser):
     name = CharField(_("Name of User"), blank=True, max_length=255)
     first_name = None  # type: ignore
     last_name = None  # type: ignore
+    email = EmailField(_("Email"), unique=True)
+    username = CharField(_("Username"), max_length=150, blank=True)
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["username", "name"]
 
     def get_absolute_url(self):
         """Get url for user's detail view.

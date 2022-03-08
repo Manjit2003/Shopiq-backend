@@ -304,3 +304,4 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+ACCOUNT_AUTHENTICATION_METHOD = "email"
